@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Database / Data Analyst Portfolio</title>
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --text: #333;
+      --card-bg: #fff;
+      --primary: #2b3a67;
+      --skill-bg: #e9eef5;
+    }
+
+    body.dark {
+      --bg: #1e1e2f;
+      --text: #e4e4e4;
+      --card-bg: #2b2b3c;
+      --primary: #6c8ae4;
+      --skill-bg: #3a3a4f;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header {
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1.1rem;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      padding: 0.5rem 1rem;
+      background: #fff;
+      color: var(--primary);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark .toggle-btn {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      background: var(--card-bg);
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: background 0.3s;
+    }
+
+    section h2 {
+      margin-top: 0;
+      color: var(--primary);
+      font-size: 1.5rem;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 0.5rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill {
+      background: var(--skill-bg);
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      font-size: 0.9rem;
+      background: var(--primary);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Your Name</h1>
+    <p>Aspiring Database / Data Analyst | SQL • Python • Data Visualization</p>
+    <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+  </header>
+
+  <main>
+    <section>
+    <h2>About Me</h2>
+    <p>
+        Hi! I’m an aspiring data analyst with a passion for working with numbers,
+        databases, and turning raw data into meaningful insights. I enjoy solving
+        problems with SQL, building clean dashboards, and finding patterns that help
+        people make smarter decisions.
+    </p>
+    </section>
+
+    <section>
+    <h2>Skills</h2>
+    <div class="skills-grid">
+        <div class="skill">SQL</div>
+        <div class="skill">Python</div>
+        <div class="skill">Excel</div>
+        <div class="skill">Tableau</div>
+        <div class="skill">Power BI</div>
+        <div class="skill">Data Cleaning</div>
+        <div class="skill">Database Design</div>
+        <div class="skill">ETL</div>
+    </div>
+    </section>
+
+    <section>
+    <h2>Projects</h2>
+    <ul>
+        <li><strong>Sales Dashboard:</strong> Built an interactive Tableau dashboard that helped track sales performance and highlight trends over time.</li>
+        <li><strong>Database Schema:</strong> Designed and set up a relational database in MariaDB for a chat application, including user accounts and message storage.</li>
+        <li><strong>Data Cleaning Scripts:</strong> Wrote Python scripts to clean, transform, and merge messy CSV files into structured, ready-to-analyze datasets.</li>
+    </ul>
+    </section>
+
+    <section>
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+    <p>LinkedIn: <a href="#">linkedin.com/in/yourname</a></p>
+    <p>GitHub: <a href="#">github.com/yourname</a></p>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2025 Your Name — Database / Data Analyst Portfolio
+  </footer>
+
+  <script>
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark");
+      const btn = document.querySelector(".toggle-btn");
+      if (document.body.classList.contains("dark")) {
+        btn.textContent = "☀️ Light Mode";
+      } else {
+        btn.textContent = "🌙 Dark Mode";
+      }
+    }
+  </script>
+</body>
+</html>
