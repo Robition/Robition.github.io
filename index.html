@@ -33,8 +33,17 @@
       background: var(--primary);
       color: #fff;
       text-align: center;
-      padding: 2rem 1rem;
+      padding: 2rem 1rem 3rem;
       position: relative;
+    }
+
+    header img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
+      margin-bottom: 1rem;
     }
 
     header h1 {
@@ -108,6 +117,40 @@
       transition: background 0.3s;
     }
 
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--skill-bg);
+      padding: 1rem;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
+
+    .project-card h3 {
+      margin-top: 0;
+      color: var(--primary);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      text-align: left;
+    }
+
+    th {
+      background: var(--skill-bg);
+    }
+
     footer {
       text-align: center;
       padding: 1.5rem;
@@ -119,6 +162,7 @@
 </head>
 <body>
   <header>
+    <img src="https://via.placeholder.com/120" alt="Your photo">
     <h1>Your Name</h1>
     <p>Aspiring Database / Data Analyst | SQL • Python • Data Visualization</p>
     <button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
@@ -126,18 +170,18 @@
 
   <main>
     <section>
-    <h2>About Me</h2>
-    <p>
+      <h2>About Me</h2>
+      <p>
         Hi! I’m an aspiring data analyst with a passion for working with numbers,
         databases, and turning raw data into meaningful insights. I enjoy solving
         problems with SQL, building clean dashboards, and finding patterns that help
         people make smarter decisions.
-    </p>
+      </p>
     </section>
 
     <section>
-    <h2>Skills</h2>
-    <div class="skills-grid">
+      <h2>Skills</h2>
+      <div class="skills-grid">
         <div class="skill">SQL</div>
         <div class="skill">Python</div>
         <div class="skill">Excel</div>
@@ -146,25 +190,56 @@
         <div class="skill">Data Cleaning</div>
         <div class="skill">Database Design</div>
         <div class="skill">ETL</div>
-    </div>
+      </div>
     </section>
 
     <section>
-    <h2>Projects</h2>
-    <ul>
-        <li><strong>Sales Dashboard:</strong> Built an interactive Tableau dashboard that helped track sales performance and highlight trends over time.</li>
-        <li><strong>Database Schema:</strong> Designed and set up a relational database in MariaDB for a chat application, including user accounts and message storage.</li>
-        <li><strong>Data Cleaning Scripts:</strong> Wrote Python scripts to clean, transform, and merge messy CSV files into structured, ready-to-analyze datasets.</li>
-    </ul>
+      <h2>Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Sales Dashboard</h3>
+          <p>Interactive Tableau dashboard tracking sales performance and highlighting trends.</p>
+        </div>
+        <div class="project-card">
+          <h3>Database Schema</h3>
+          <p>Designed and built a relational database in MariaDB for a chat application.</p>
+        </div>
+        <div class="project-card">
+          <h3>Data Cleaning Scripts</h3>
+          <p>Python scripts that clean and merge messy datasets into structured formats.</p>
+        </div>
+        <!-- Add more project cards here -->
+      </div>
     </section>
 
     <section>
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
-    <p>LinkedIn: <a href="#">linkedin.com/in/yourname</a></p>
-    <p>GitHub: <a href="#">github.com/yourname</a></p>
+      <h2>Example Database</h2>
+      <p>Here’s a small sample dataset with sales numbers. Click the button to calculate the total sales:</p>
+      <table id="salesTable">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Region</th>
+            <th>Sales</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Laptop</td><td>North</td><td>1200</td></tr>
+          <tr><td>Monitor</td><td>South</td><td>800</td></tr>
+          <tr><td>Keyboard</td><td>East</td><td>300</td></tr>
+          <tr><td>Mouse</td><td>West</td><td>200</td></tr>
+        </tbody>
+      </table>
+      <button onclick="calculateTotal()">Calculate Total Sales</button>
+      <p id="totalOutput"></p>
     </section>
 
+    <section>
+      <h2>Contact</h2>
+      <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+      <p>LinkedIn: <a href="#">linkedin.com/in/yourname</a></p>
+      <p>GitHub: <a href="#">github.com/yourname</a></p>
+    </section>
   </main>
 
   <footer>
@@ -175,11 +250,19 @@
     function toggleDarkMode() {
       document.body.classList.toggle("dark");
       const btn = document.querySelector(".toggle-btn");
-      if (document.body.classList.contains("dark")) {
-        btn.textContent = "☀️ Light Mode";
-      } else {
-        btn.textContent = "🌙 Dark Mode";
-      }
+      btn.textContent = document.body.classList.contains("dark")
+        ? "☀️ Light Mode"
+        : "🌙 Dark Mode";
+    }
+
+    function calculateTotal() {
+      let total = 0;
+      const rows = document.querySelectorAll("#salesTable tbody tr");
+      rows.forEach(row => {
+        total += parseInt(row.cells[2].textContent);
+      });
+      document.getElementById("totalOutput").textContent =
+        "Total Sales: $" + total;
     }
   </script>
 </body>
